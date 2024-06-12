@@ -1,0 +1,18 @@
+name: 'coverage'
+on:
+    pull_request:
+        branches:
+            - main
+
+defaults:
+  run:
+    working-directory: week1/
+    
+jobs:
+    coverage:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: ArtiomTr/jest-coverage-report-action@v2
+              with:
+                working-directory: week1/
