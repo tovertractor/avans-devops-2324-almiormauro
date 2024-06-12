@@ -9,14 +9,15 @@ on:
   pull_request:
     branches: [ "main" ]
     
-defaults:
- run:
-  working-directory: ./week1
+
   
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+     run:
+      working-directory: ./week1/
     strategy:
       matrix:
         node-version: [18.x]
