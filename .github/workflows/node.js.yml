@@ -32,7 +32,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-depency-path: week1/package.json
+        cache-depency-path: 'week1/package.json'
     - run: npm ci
       working-directory: week1/
     - run: npm run build --if-present
