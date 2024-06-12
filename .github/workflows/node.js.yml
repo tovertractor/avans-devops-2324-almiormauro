@@ -32,7 +32,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        working-directory: './week1/'
+        cache-depency-path: week1/package-lock.json
     - run: npm ci
+      working-directory: week1/
     - run: npm run build --if-present
+      working-directory: week1/
     - run: npm test
+      working-directory: week1/
