@@ -11,8 +11,7 @@ services:
         depends_on:
             - mongodb
         environment:
-#            MONGO_URL: mongodb://${DB_USERNAME}:${DB_PWD}@mongodb:27017/week1data?authSource=admin
-            MONGO_URL: mongodb://mongodb:27017/week1data?authSource=admin
+            MONGO_URL: mongodb://${DB_USERNAME}:${DB_PWD}@mongodb:27017/?authSource=admin
             DB_NAME: week1data
         volumes:
             - ./week1:/app
@@ -26,9 +25,9 @@ services:
         volumes:
             - mongo-data:/data/db
         restart: always
-#        environment:
-#            MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
-#            MONGO_INITDB_ROOT_PASSWORD: ${DB_PWD}
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_PWD}
 volumes:
     mongo-data:
         driver: local
