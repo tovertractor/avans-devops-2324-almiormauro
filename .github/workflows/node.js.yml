@@ -26,13 +26,13 @@ jobs:
         working-directory: week1/
         
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-depency-path: 'week1/package.json'
+        cache-depency-path: 'week1/package-lock.json'
     - run: npm ci
       working-directory: week1/
     - run: npm run build --if-present
