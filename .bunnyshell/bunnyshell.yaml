@@ -1,0 +1,43 @@
+kind: Environment
+name: preview
+type: primary
+urlHandle: almiordevopspreview
+components:
+    -
+        kind: Database
+        name: mongodb
+        dockerCompose:
+            image: 'mongo:latest'
+            restart: always
+            ports:
+                - '27017:27017'
+        volumes:
+            -
+                name: mongo-data
+                mount: /data/db
+                subPath: ''
+    -
+        kind: Application
+        name: week1
+        gitRepo: 'https://github.com/tovertractor/avans-devops-2324-almiormauro.git'
+        gitBranch: main
+        gitApplicationPath: week1
+        dockerCompose:
+            build:
+                context: ./week1
+                dockerfile: Dockerfile
+            environment:
+                DB_NAME: week1data
+                MONGO_URL: 'mongodb://mongodb:27017/week1data?authSource=admin'
+            ports:
+                - '3000:3000'
+        hosts:
+            -
+                hostname: 'week1-{{ env.base_domain }}'
+                path: /
+                servicePort: 3000
+volumes:
+    -
+        name: mongo-data
+        size: 1Gi
+        type: disk
