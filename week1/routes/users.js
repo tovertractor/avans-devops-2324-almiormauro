@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 const { db } = require('../services/database');
-var unused = ""
 
 /* GET users listing. */
 router.get('/', async function(req, res) {
