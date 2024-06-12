@@ -4,7 +4,7 @@ var router = express.Router();
 const { db } = require('../database/database');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
     let users = await db.collection('users').find().toArray();
     res.json(users);
 });
