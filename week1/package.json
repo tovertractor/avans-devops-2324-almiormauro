@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon --legacy-watch ./bin/www",
     "test": "jest",
     "lint": "npx eslint ."
   },

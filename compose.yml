@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+    week1:
+        container_name: week1
+        build:
+            context: ./week1
+            dockerfile: Dockerfile
+        ports:
+            - "3000:3000"
+        depends_on:
+            - mongodb
+        environment:
+#            MONGO_URL: mongodb://${DB_USERNAME}:${DB_PWD}@mongodb:27017/week1data?authSource=admin
+            MONGO_URL: mongodb://mongodb:27017/week1data?authSource=admin
+            DB_NAME: week1data
+        volumes:
+            - ./week1:/app
+    mongodb:
+        image: mongo:latest
+        container_name: mongodb
+        expose:
+            - "27017"
+#        ports:
+#            -   "27017:27017"
+        volumes:
+            - mongo-data:/data/db
+        restart: always
+#        environment:
+#            MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+#            MONGO_INITDB_ROOT_PASSWORD: ${DB_PWD}
+volumes:
+    mongo-data:
+        driver: local
