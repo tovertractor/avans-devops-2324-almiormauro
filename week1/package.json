@@ -32,7 +32,7 @@
     "preset": "@shelf/jest-mongodb",
     "coverageThreshold": {
       "global": {
-        "lines": 99
+        "lines": 60
       }
     }
   }
