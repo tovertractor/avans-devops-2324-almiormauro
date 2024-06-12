@@ -1,11 +1,11 @@
 require('dotenv').config();
 const { MongoClient } = require("mongodb")
 
-const uri = process.env.DB_URL
+const uri = process.env.MONGO_URL
 
 const client = new MongoClient(uri)
 
-db = client.db(process.env.DB_NAME)
+const db = client.db(process.env.DB_NAME)
 
 module.exports = {
     db: db,
