@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const { db, client} = require('../services/database');
+const { db} = require('../services/database');
 
 const prom = require("prom-client")
 const guage = new prom.Gauge({ name: 'number_requests', help: "number of requests send to user service"})
