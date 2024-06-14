@@ -52,7 +52,7 @@
             },
             "gridPos": {
                 "h": 7,
-                "w": 4,
+                "w": 12,
                 "x": 0,
                 "y": 0
             },
@@ -82,7 +82,7 @@
                     },
                     "disableTextWrap": false,
                     "editorMode": "builder",
-                    "expr": "number_requests{instance=\"week1:5000\"}",
+                    "expr": "number_requests_to_week1{instance=\"week1:5000\"}",
                     "fullMetaSearch": false,
                     "includeNullMetadata": true,
                     "instant": false,
@@ -92,7 +92,7 @@
                     "useBackend": false
                 }
             ],
-            "title": "amount of requests",
+            "title": "amount of requests to week1",
             "type": "stat"
         },
         {
@@ -102,17 +102,10 @@
             },
             "fieldConfig": {
                 "defaults": {
-                    "mappings": [
-                        {
-                            "options": {
-                                "match": "null",
-                                "result": {
-                                    "text": "N/A"
-                                }
-                            },
-                            "type": "special"
-                        }
-                    ],
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
                     "thresholds": {
                         "mode": "absolute",
                         "steps": [
@@ -125,34 +118,31 @@
                                 "value": 80
                             }
                         ]
-                    },
-                    "unit": "none"
+                    }
                 },
                 "overrides": []
             },
             "gridPos": {
-                "h": 3,
-                "w": 5,
-                "x": 4,
+                "h": 7,
+                "w": 12,
+                "x": 12,
                 "y": 0
             },
-            "id": 2,
-            "interval": "",
-            "maxDataPoints": 100,
+            "id": 14,
             "options": {
-                "colorMode": "none",
-                "graphMode": "none",
+                "colorMode": "value",
+                "graphMode": "area",
                 "justifyMode": "auto",
-                "orientation": "horizontal",
+                "orientation": "auto",
                 "reduceOptions": {
                     "calcs": [
-                        "mean"
+                        "lastNotNull"
                     ],
-                    "fields": "/^__name__$/",
+                    "fields": "",
                     "values": false
                 },
                 "showPercentChange": false,
-                "textMode": "name",
+                "textMode": "auto",
                 "wideLayout": true
             },
             "pluginVersion": "11.0.0",
@@ -162,16 +152,19 @@
                         "type": "prometheus",
                         "uid": "PBFA97CFB590B2093"
                     },
-                    "expr": "sum(nodejs_version_info{instance=~\"$instance\"}) by (version)",
-                    "format": "time_series",
+                    "disableTextWrap": false,
+                    "editorMode": "builder",
+                    "expr": "number_requests_to_app2{job=\"app2\"}",
+                    "fullMetaSearch": false,
+                    "includeNullMetadata": true,
                     "instant": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{version}}",
-                    "refId": "A"
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A",
+                    "useBackend": false
                 }
             ],
-            "title": "Node.js Version",
+            "title": "amount of requests to app2",
             "type": "stat"
         },
         {
@@ -236,9 +229,9 @@
             },
             "gridPos": {
                 "h": 7,
-                "w": 7,
-                "x": 9,
-                "y": 0
+                "w": 12,
+                "x": 0,
+                "y": 7
             },
             "id": 8,
             "options": {
@@ -337,9 +330,9 @@
             },
             "gridPos": {
                 "h": 7,
-                "w": 8,
-                "x": 16,
-                "y": 0
+                "w": 12,
+                "x": 12,
+                "y": 7
             },
             "id": 9,
             "options": {
@@ -386,86 +379,6 @@
             ],
             "title": "Active Handlers/Requests Total",
             "type": "timeseries"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "PBFA97CFB590B2093"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "fixedColor": "#F2495C",
-                        "mode": "fixed"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "match": "null",
-                                "result": {
-                                    "text": "N/A"
-                                }
-                            },
-                            "type": "special"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "green",
-                                "value": null
-                            },
-                            {
-                                "color": "red",
-                                "value": 80
-                            }
-                        ]
-                    },
-                    "unit": "none"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 4,
-                "w": 5,
-                "x": 4,
-                "y": 3
-            },
-            "id": 4,
-            "maxDataPoints": 100,
-            "options": {
-                "colorMode": "none",
-                "graphMode": "area",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "showPercentChange": false,
-                "textMode": "auto",
-                "wideLayout": true
-            },
-            "pluginVersion": "11.0.0",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "PBFA97CFB590B2093"
-                    },
-                    "expr": "sum(changes(process_start_time_seconds{instance=~\"$instance\"}[1m]))",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{instance}}",
-                    "refId": "A"
-                }
-            ],
-            "title": "Process Restart Times",
-            "type": "stat"
         },
         {
             "datasource": {
@@ -531,7 +444,7 @@
                 "h": 8,
                 "w": 10,
                 "x": 0,
-                "y": 7
+                "y": 14
             },
             "id": 6,
             "options": {
@@ -643,7 +556,7 @@
                 "h": 8,
                 "w": 14,
                 "x": 10,
-                "y": 7
+                "y": 14
             },
             "id": 7,
             "options": {
@@ -777,7 +690,7 @@
                 "h": 8,
                 "w": 24,
                 "x": 0,
-                "y": 15
+                "y": 22
             },
             "id": 12,
             "options": {
@@ -878,7 +791,7 @@
                 "h": 8,
                 "w": 10,
                 "x": 0,
-                "y": 23
+                "y": 30
             },
             "id": 10,
             "options": {
@@ -979,7 +892,7 @@
                 "h": 8,
                 "w": 14,
                 "x": 10,
-                "y": 23
+                "y": 30
             },
             "id": 11,
             "options": {
@@ -1085,6 +998,6 @@
     "timezone": "",
     "title": "NodeJS Application Dashboard",
     "uid": "PTSqcpJWk",
-    "version": 2,
+    "version": 1,
     "weekStart": ""
 }

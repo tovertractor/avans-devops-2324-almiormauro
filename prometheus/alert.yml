@@ -4,3 +4,6 @@ groups:
           - alert: "On week1 down"
             expr: up{job="week1"} < 1
             for: 10s
+          - alert: "On app2 down"
+            expr: up{job="app2"} < 1
+            for: 10s
