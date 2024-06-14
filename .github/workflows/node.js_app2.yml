@@ -37,3 +37,5 @@ jobs:
       working-directory: app2/
     - run: npm test
       working-directory: app2/
+    - run: npm run lint
+      working-directory: app2/
