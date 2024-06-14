@@ -9,11 +9,15 @@ services:
         ports:
             - "5000:5000"
         depends_on:
-            - mongodb
+            mongodb:
+                condition: service_started
+            rabbitmq:
+                condition: service_healthy
         environment:
             MONGO_URL: mongodb://${DB_USERNAME}:${DB_PWD}@mongodb:27017/?authSource=admin
             DB_NAME: week1data
             PORT: 5000
+            AMQP_URL: ${AMQP_URL}
         volumes:
             - ./week1:/app
     app2:
@@ -24,11 +28,17 @@ services:
         ports:
             - "5001:5001"
         depends_on:
-            - mongodb2
+            mongodb2:
+                condition: service_started
+            rabbitmq:
+                condition: service_healthy
         environment:
             MONGO_URL: mongodb://${DB_USERNAME}:${DB_PWD}@mongodb2:27017/?authSource=admin
             DB_NAME: app2data
             PORT: 5001
+            AMQP_URL: ${AMQP_URL}
+        volumes:
+            - ./app2:/app
     mongodb:
         image: mongo:latest
         container_name: mongodb
@@ -70,6 +80,11 @@ services:
         ports:
             - "15672:15672"
             - "5672:5672"
+        healthcheck:
+            test: rabbitmq-diagnostics -q ping
+            interval: 30s
+            timeout: 30s
+            retries: 3
 volumes:
     mongo-data:
         driver: local

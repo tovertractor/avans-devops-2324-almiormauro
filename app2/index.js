@@ -12,3 +12,7 @@ app.use('/', indexRoutes)
 app.listen(PORT, () =>{
     console.log(`app2 server started on port ${PORT}`);
 })
+
+const recieveMessage = require('./messagequeue/recieve')
+
+recieveMessage()
