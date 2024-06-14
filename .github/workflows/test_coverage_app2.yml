@@ -1,4 +1,4 @@
-name: 'coverage'
+name: 'coverage app2 service'
 on:
     push:
         branches: [ "main" ]
@@ -7,7 +7,7 @@ on:
 
 defaults:
     run:
-        working-directory: week1/
+        working-directory: app2/
 
 jobs:
     coverage:
@@ -16,4 +16,4 @@ jobs:
             - uses: actions/checkout@v3
             - uses: ArtiomTr/jest-coverage-report-action@v2
               with:
-                  working-directory: week1/
+                  working-directory: app2/
