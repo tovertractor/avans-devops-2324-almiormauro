@@ -1,3 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/B9F4RYVR)
-[![Node.js CI](https://github.com/avans-devops/avans-devops-2324-almiormauro/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/avans-devops/avans-devops-2324-almiormauro/actions/workflows/node.js.yml)
-[![coverage](https://github.com/avans-devops/avans-devops-2324-almiormauro/actions/workflows/jest_coverage.yml/badge.svg?branch=main)](https://github.com/avans-devops/avans-devops-2324-almiormauro/actions/workflows/jest_coverage.yml)
+
+[![coverage app2 service](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/test_coverage_app2.yml/badge.svg)](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/test_coverage_app2.yml)
+[![coverage week1 service](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/test_coverage_week1.yml/badge.svg)](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/test_coverage_week1.yml)
+[![Node.js CI app2](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/node.js_app2.yml/badge.svg)](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/node.js_app2.yml)
+[![Node.js CI week1](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/node.js_week1.yml/badge.svg)](https://github.com/tovertractor/avans-devops-2324-almiormauro/actions/workflows/node.js_week1.yml)
