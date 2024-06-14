@@ -5,7 +5,7 @@ const { db} = require('../services/database');
 const sendMessage = require('../messagequeue/send')
 
 const prom = require("prom-client")
-const guage = new prom.Gauge({ name: 'number_requests', help: "number of requests send to user service"})
+const guage = new prom.Gauge({ name: 'number_requests_to_week1', help: "number of requests send to week1 job"})
 
 /* GET users listing. */
 router.get('/', async function(req, res) {
