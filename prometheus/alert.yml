@@ -3,4 +3,4 @@ groups:
       rules:
           - alert: "On week1 down"
             expr: up{job="week1"} < 1
-            for: 30s
+            for: 10s
