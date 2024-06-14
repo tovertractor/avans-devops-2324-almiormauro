@@ -16,15 +16,37 @@ services:
             PORT: 5000
         volumes:
             - ./week1:/app
+    app2:
+        container_name: app2
+        build:
+            context: ./app2
+            dockerfile: Dockerfile
+        ports:
+            - "5001:5001"
+        depends_on:
+            - mongodb2
+        environment:
+            MONGO_URL: mongodb://${DB_USERNAME}:${DB_PWD}@mongodb2:27017/?authSource=admin
+            DB_NAME: app2data
+            PORT: 5001
     mongodb:
         image: mongo:latest
         container_name: mongodb
         expose:
             - "27017"
-#        ports:
-#            -   "27017:27017"
         volumes:
             - mongo-data:/data/db
+        restart: always
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_PWD}
+    mongodb2:
+        image: mongo:latest
+        container_name: mongodb2
+        expose:
+            - "27017"
+        volumes:
+            - mongo2-data:/data/db
         restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
@@ -50,5 +72,7 @@ services:
             - "5672:5672"
 volumes:
     mongo-data:
+        driver: local
+    mongo2-data:
         driver: local
     prometheus-data:
