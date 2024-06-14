@@ -9,7 +9,6 @@ const db = client.db(process.env.DB_NAME)
 
 function addUser(name){
     db.collection('users').insertOne({name})
-    console.log(`added user ${name}`)
 }
 
 async function getUsers(){

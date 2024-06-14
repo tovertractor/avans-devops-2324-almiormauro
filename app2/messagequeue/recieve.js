@@ -17,7 +17,7 @@ function recieveMessage(){
                 durable: false
             })
             
-            console.log("app2 waiting for messages in %s.", queue)
+            console.log("listening to queue " + queue)
             channel.consume(queue, function(msg){
                 console.log(`Recieved ${msg.content.toString()} from week1`)
                 var user = msg.content.toString();
