@@ -8,6 +8,7 @@
     "lint": "npx eslint ."
   },
   "dependencies": {
+    "amqplib": "^0.10.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
@@ -29,7 +30,7 @@
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
-      "//node_modules/"
+      "/node_modules/"
     ],
     "preset": "@shelf/jest-mongodb",
     "coverageThreshold": {

@@ -1,7 +1,7 @@
 global:
-    scrape_interval: 3s
-    evaluation_interval: 3s
-    scrape_timeout: 2s
+    scrape_interval: 15s
+    evaluation_interval: 15s
+    scrape_timeout: 10s
 
 rule_files:
     - alert.yml
